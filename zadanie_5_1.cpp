@@ -31,7 +31,7 @@ int main() {
             }
             max_index.push_back(i);
         }
-        if (vec[i] == max_val) {
+        else if (vec[i] == max_val) {
             max_index.push_back(i);
         }
     }
