@@ -20,14 +20,30 @@ int main() {
         cout << vec[i] << " ";
     }
     int max_val = 0;
-    int max_index = 0;
+    //int max_index = 0;
+    vector <int> max_index;
     for (int i = 0; i < vec_size; i++) {
         if (vec[i] > max_val) {
             max_val = vec[i];
-            max_index = i;
+            //max_index = i;
+            while (!max_index.empty()) {
+                max_index.pop_back();
+            }
+            max_index.push_back(i);
+        }
+        if (vec[i] == max_val) {
+            max_index.push_back(i);
         }
     }
-    cout << "\n Najwieksza wartosc " << max_val << " ma element nr " << max_index + 1 << ".";
+    cout << "\n Najwieksza wartosc " << max_val << " maja elementy o numerach ";// << max_index + 1 << ".";
+    while (!max_index.empty()) {
+        cout << max_index[0] + 1;
+        if ( max_index.size() > 1 ) {
+            cout << ", ";
+        }
+        max_index.erase(max_index.begin());
+    }
+    cout << ".";
     return 0;
 
 

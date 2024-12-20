@@ -42,7 +42,7 @@ int main() {
             for (int i = 0; i < wiersze; i++) {
         for (int j = 0; j < kolumny; j++) {
             // srand(get_current_time_micros() - start_time);
-            tab[i][j] = rand();
+            tab[i][j] = rand() % 1000;
         }
     }
     // Wyswietlenie tablicy
@@ -52,9 +52,24 @@ int main() {
         }
         cout << endl;
     }
-    for (int i = 0; i < 20; i++) {
-        cout << get_current_time_micros() - start_time << endl;
+    cout << endl << endl;
+    // Zamiana wartosci
+    int temp = 0;
+    for (int i = 0; i < wiersze; i++) {
+      for (int j = 0; j < ( kolumny / 2 ); j++) {
+        temp = tab[i][j];
+        tab[i][j] = tab[i][kolumny - j - 1];
+        tab[i][kolumny - j - 1] = temp;
+      }
     }
+    // Wyswietlenie tablicy
+    for (int i = 0; i < wiersze; i++) {
+        for (int j = 0; j < kolumny; j++) {
+            cout << tab[i][j] << " ";
+        }
+        cout << endl;
+    }
+
 
     return 0;
 }
